@@ -1,13 +1,18 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, } from 'react';
 import Header from './Header';
 import { checkValidData } from '../utils/validate.js';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase.js";
+import { useNavigate } from 'react-router-dom';
+import { updateProfile } from "firebase/auth";
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/userSlice.js';
 
 const Login = () => {
 
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [isSignInForm, setIsSignInForm] = useState(true)
-
     const [errorMessage, setErrorMessage] = useState(null);
 
     const toggleSignInForm = () =>{
@@ -50,8 +55,42 @@ const Login = () => {
             .then((userCredential) => {
                 // Signed up 
                 const user = userCredential.user;
+
+                    //once user is created ,then update user profile
+                    // updateProfile(auth.user, {
+                    updateProfile(user, {
+                        displayName: name.current.value, 
+                        photoURL: "https://avatars.githubusercontent.com/u/52608875?v=4"
+                    })
+                    .then(() => {
+                    // Profile updated!
+                    // ...
+                    // updating store once again as earlier in onAuthstatechange, updating store in body we were not getting name and photoURL in starting so disapatching here itself
+                    
+                    const { 
+                        uid,
+                        email, 
+                        displayName,
+                        photoURL } = auth.currentUser;
+                        // now it will be auth instead of user , because its new auth information value
+                        dispatch(
+                            addUser({ 
+                            uid: uid, 
+                            email: email, 
+                            displayName: displayName, 
+                            photoURL: photoURL 
+                      }));
+                    navigate("/browse");
+
+                }).catch((error) => {
+                // An error occurred
+                // ...
+                setErrorMessage(error.message);
+                });
+
                 console.log(user);
                 // ...
+                // navigate("/browse");
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -70,6 +109,7 @@ const Login = () => {
                 const user = userCredential.user;
                 console.log(user);
                 // ...
+                navigate("/browse");
             })
             .catch((error) => {
                 const errorCode = error.code;
