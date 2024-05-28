@@ -8,14 +8,18 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 import { removeUser } from '../utils/userSlice';
-import { LOGO_URL } from '../utils/constants';
-
+import { LOGO_URL, SUPPORTED_LANGUAGES } from '../utils/constants';
+import { toggleGptSearchView } from '../utils/gptSlice';
+import { changeLanguage } from '../utils/configSlice';
 
 const Header = () => {
 
   const navigate = useNavigate();
 
-  const user = useSelector(store => store.user);
+  const user = useSelector((store) => store.user);
+
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch)
+  //using this to only show lang button on gpt search component added conditon below 
 
   const handleSignOut = () => {
     signOut(auth).then(() => {
@@ -79,6 +83,19 @@ const Header = () => {
   
       },[])
 
+      const handleGptSearchClick = () => {
+        //Toggle GPT search 
+        //store it somewhere that show gpt browse page or normal browse page 
+        // we will use redux store as we are using it in project, we can also do with state variable
+        dispatch(toggleGptSearchView());
+      }
+
+      const handleLanguageChange = (e) => {
+        dispatch(changeLanguage(e.target.value));
+        // console.log(e.target.value);
+        //we can use useRef for getting the select box
+      };
+
   return (
     <div className='absolute px-8 py-2 bg-gradient-to-b from-black z-10 w-screen z-10 flex justify-between'>
       <img
@@ -91,6 +108,30 @@ const Header = () => {
       {/* build signout option */}
       {user && ( 
         <div className='flex p-2'>
+
+          { 
+          showGptSearch && 
+          <select
+              className="p-2 m-2 bg-gray-900 text-white"
+              onChange={handleLanguageChange}
+            >
+          {/* <select className="p-2 m-2 bg-gray-900 text-white"> */}
+          {SUPPORTED_LANGUAGES.map((lang) => (
+                <option key={lang.identifier} value={lang.identifier}>
+                  {lang.name}
+                </option>
+          ))}
+            {/*  <option value="en">English</option>
+             <option value="hindi">Hindi</option>
+             <option value="spanish">Spanish</option> */}
+          </select> 
+          }
+          
+          <button className='py-2 px-2 mx-4 my-2 bg-purple-400 text-white rounded-lg'
+          onClick={handleGptSearchClick}>
+            {showGptSearch ? "Home" : "GPT Search"}
+            </button>
+
           <img className='w-10 h-10 rounded-md '
           alt = "usericon"
           // src="https://occ-0-6246-2186.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABelYeQhdDSleXnwq1Y7EyxtTDiSw3ZgK2EnBQR5Y-Yav3LC10tCzbIcvsA34KEM-SgBfopzYVOVyKm80bahrQiAqpBqGf2w.png?r=15e"
