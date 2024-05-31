@@ -9,7 +9,8 @@ export const API_OPTIONS = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhOGM3MGMxZTMyZTI3YmUxNDk1NGU4OTYzZDA3Y2EyYSIsInN1YiI6IjY2NGNiZDI3MzhkN2FhZDhjOTc5YjlhNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4B_ycoZSYsvS6qAnCxKyBSluOsilQyRiCiNzLUYVsUY'
+      Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhOGM3MGMxZTMyZTI3YmUxNDk1NGU4OTYzZDA3Y2EyYSIsInN1YiI6IjY2NGNiZDI3MzhkN2FhZDhjOTc5YjlhNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4B_ycoZSYsvS6qAnCxKyBSluOsilQyRiCiNzLUYVsUY"
+      // Authorization: "Bearer " + process.env.REACT_APP_TMDB_KEY,
     }
   };
 
@@ -25,3 +26,13 @@ export const SUPPORTED_LANGUAGES = [
 
 
 // export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;
+
+export const OPENAI_KEY = "sk-proj-CpZ2cKGKUasqjgtu4K35T3BlbkFJiga9M28rxKxnZQO3Jc6M";
+//install libray openai
+// export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;
+
+
+
+// api key from google gemini
+// AIzaSyDI2CxwryluVVRCOJ51jVrNvJ5xn8VWi2I
+// export const OPENAI_KEY = "AIzaSyDI2CxwryluVVRCOJ51jVrNvJ5xn8VWi2I";

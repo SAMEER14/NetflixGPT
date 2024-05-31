@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
 import { addTrailerVideo } from "../utils/moviesSlice";
 import { useEffect } from "react";
@@ -6,6 +6,10 @@ import { useEffect } from "react";
 const useMovieTrailer = (movieId) => {
 
     const dispatch = useDispatch();
+
+
+    //memoization
+    const trailerVideo = useSelector(store => store.movies.trailerVideo);
   
     //state variable for YT key from json data trailer
     // const [trailerId, setTrailerId ] =useState(null);
@@ -47,7 +51,7 @@ const useMovieTrailer = (movieId) => {
     
       //call this is useEffect
       useEffect(() => {
-        getMovieVideos();
+        !trailerVideo && getMovieVideos();
       },[])
 
 }
