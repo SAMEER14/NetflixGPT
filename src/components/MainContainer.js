@@ -21,7 +21,7 @@ const MainContainer = () => {
     console.log(id);
 
 return (
-    <div>
+    <div className='pt-[30%] bg-black md:pt-0'>
       {/* <h1>MainContainer</h1> */}
       {/* 2 component video title , video background */}
       

@@ -97,9 +97,9 @@ const Header = () => {
       };
 
   return (
-    <div className='absolute px-8 py-2 bg-gradient-to-b from-black z-10 w-screen z-10 flex justify-between'>
+    <div className='absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between'>
       <img
-      className='w-44' 
+      className='w-44 mx-auto md:mx-0' 
       src= {LOGO_URL}
       alt="logo"
       />
@@ -132,7 +132,7 @@ const Header = () => {
             {showGptSearch ? "Home" : "GPT Search"}
             </button>
 
-          <img className='w-10 h-10 rounded-md '
+          <img className='hidden md:block w-10 h-10 rounded-md '
           alt = "usericon"
           // src="https://occ-0-6246-2186.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABelYeQhdDSleXnwq1Y7EyxtTDiSw3ZgK2EnBQR5Y-Yav3LC10tCzbIcvsA34KEM-SgBfopzYVOVyKm80bahrQiAqpBqGf2w.png?r=15e"
           // using useSelector to display image in header
