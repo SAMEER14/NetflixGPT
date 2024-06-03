@@ -124,10 +124,10 @@ const Login = () => {
   return (
     <div>
       <Header />
-        <div className="absolute">
+        <div className="absolute inset-0">
             <img
             // className='h-screen object-cover'
-            className='object-cover'
+            className='w-full h-full object-cover fixed'
             src={BG_URL}
             alt="background"
             />

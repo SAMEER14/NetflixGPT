@@ -131,7 +131,7 @@ const Header = () => {
           </select> 
           }
           
-          <button className='py-2 px-2 mx-4 my-2 bg-purple-400 text-white rounded-lg'
+          <button className='py-2 px-2 mx-4 my-2 bg-red-600 text-white rounded-lg'
           onClick={handleGptSearchClick}>
             {showGptSearch ? "Home" : "GPT Search"}
             </button>
@@ -143,9 +143,9 @@ const Header = () => {
           src={user?.photoURL}
           />
           <button onClick={handleSignOut}  className='font-bold text-white'>
-            (Sign out)
+            Sign out
           </button>
-        {/* to make button in drop down liek netflix make a component and align there  */}
+        {/* to make button in drop down like netflix make a component and align there  */}
         </div>
     )}
 
