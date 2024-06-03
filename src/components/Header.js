@@ -11,6 +11,7 @@ import { removeUser } from '../utils/userSlice';
 import { LOGO_URL, SUPPORTED_LANGUAGES } from '../utils/constants';
 import { toggleGptSearchView } from '../utils/gptSlice';
 import { changeLanguage } from '../utils/configSlice';
+import { Link } from "react-router-dom";
 
 const Header = () => {
 
@@ -98,11 +99,14 @@ const Header = () => {
 
   return (
     <div className='absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between'>
+      
+      <Link to="/" className=''>
       <img
       className='w-44 mx-auto md:mx-0' 
       src= {LOGO_URL}
       alt="logo"
       />
+      </Link>
 
     {/* if user is null then dont load this  */}
       {/* build signout option */}
