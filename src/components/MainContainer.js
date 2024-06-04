@@ -14,11 +14,12 @@ const MainContainer = () => {
 
 //  from 20 we need 1 main movie to display 
     const mainMovie = movies[0];
-    console.log(mainMovie);//first time will give error ad mainMovie is null , therefore error comes
+    // console.log(mainMovie);
+    //first time will give error ad mainMovie is null , therefore error comes
     //adding null condition above
 
     const { original_title, overview, id } = mainMovie;
-    console.log(id);
+    // console.log(id);
 
 return (
     <div className='pt-[30%] bg-black md:pt-0'>

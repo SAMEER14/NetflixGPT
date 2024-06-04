@@ -1,6 +1,6 @@
 export const checkValidData = (email, password) => {
 
-    console.log("validate.js is imported");
+    // console.log("validate.js is imported");
 
     //regex
     const isEmailValid = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(email);

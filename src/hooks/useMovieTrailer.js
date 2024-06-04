@@ -14,7 +14,7 @@ const useMovieTrailer = (movieId) => {
     //state variable for YT key from json data trailer
     // const [trailerId, setTrailerId ] =useState(null);
 
-    console.log(movieId);
+    // console.log(movieId);
 
     const getMovieVideos = async () => {
         // const data = await fetch('https://api.themoviedb.org/3/movie/823464/videos', API_OPTIONS);
@@ -27,17 +27,17 @@ const useMovieTrailer = (movieId) => {
 
         //we will import this options , not writing again and again , good practice and also if writing in all places then you need to change in every place if token changes
         const json = await data.json();
-        console.log(json);
+        // console.log(json);
         //this json gives clip, trailers, teaser any many more videos 
         //we will fetch the trailer to display in videobackground
     
         //trailer -> filter the results
         const filterData = json.results.filter(video => video.type === "Trailer");
-        console.log(filterData);
+        // console.log(filterData);
         //if filterData is empty then also show result accordingly
         const trailer = filterData.length ? filterData[0] : json.results[0];
         //checks filterlength is there show first video from trailer type and if not there then just play the first video in json result
-        console.log(trailer);
+        // console.log(trailer);
         //this data will have a key and this key is from youtube , so will play from there and play on our page
     
     

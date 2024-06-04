@@ -13,7 +13,7 @@ const VideoBackground = ({movieId}) => {
 
   //fetch trailer video && updating the store with trailer video data
   useMovieTrailer(movieId);
-  console.log(movieId);
+  // console.log(movieId);
 
   return (
     <div>

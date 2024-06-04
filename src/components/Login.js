@@ -35,7 +35,7 @@ const Login = () => {
         // console.log(checkValidData());
         // console.log(email.current.value);
         const message = checkValidData(email.current.value, password.current.value);
-        console.log(message);
+        // console.log(message);
         setErrorMessage(message);
 
         // if(message == null)

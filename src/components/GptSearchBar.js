@@ -27,7 +27,7 @@ const GptSearchBar = () => {
     const handleGPTSearchClick = async () => {
       //this will take data from the search box
       //multiple ways to take data but we will use useRef
-      console.log(searchText.current.value);
+      // console.log(searchText.current.value);
       //make an api call to gpt api to get movies results
 
       const gptQuery = "Act as a Movie Recommendation system and suggest some movies for the query" + 
@@ -51,7 +51,7 @@ const GptSearchBar = () => {
       // console.log(gptResults.choices?.[0]?.message?.content);
 
       const gptMovies = gptResults.choices?.[0]?.message?.content.split(", ")
-      console.log(gptMovies);
+      // console.log(gptMovies);
 
       //for each movie now we will search movie in tmdb api and extract data
       // we will create a function for search each movie in TMDB api - searchMovieTMDB
@@ -66,7 +66,7 @@ const GptSearchBar = () => {
       const promiseArray = gptMovies.map(movie => searchMovieTMDB(movie));
       const tmdbResults = await Promise.all(promiseArray);
       //await so that program wait for promises to resolve
-      console.log(tmdbResults);
+      // console.log(tmdbResults);
 
       // NOW WE GOT THE DATA, NOW WE CAN PUSH THE DATA IN STORE AND EXTRACT FROM THERE AND USE IT
       //putting it in gpt slice, so create initial state and reducer and then dispatch an action to store it in redux store
